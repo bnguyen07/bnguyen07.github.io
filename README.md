@@ -1,6 +1,15 @@
-# MyBio
+# Brian Nguyen's bio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) and [Angular Material](https://github.com/angular/material2)
+
+# Steps to build and update the project
+1) git clone https://github.com/bnguyen07/bnguyen07.github.io.git
+2) npm install
+3) ng build --prod --base-href "https://bnguyen07.github.io/"
+4) angular-cli-ghpages
+5) Copy all the files in "dist" folder to root folder
+6) git commit -a -m "update site"
+7) git push
 
 ## Development server
 
