@@ -48,8 +48,7 @@ export default function Hero() {
             Hi, I'm <span className="gradient-text">{personalInfo.name}</span> <span className="inline-block animate-bounce-slow">👋</span>
           </h1>
           <p className="text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed text-balance">
-            Building enterprise-grade applications with 10+ years of expertise. 
-            Specializing in .NET, Angular, and high-performance system architecture.
+            Senior Software Engineer with 10+ years building enterprise systems using .NET, Angular, cloud-native architecture, and AI-driven workflows.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -61,8 +60,19 @@ export default function Hero() {
             >
               Get in Touch <ArrowRight size={18} />
             </motion.a>
+
+            <motion.a
+              href={personalInfo.links.resume}
+              target="_blank"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 bg-zinc-900 text-white border border-zinc-800 font-semibold rounded-full flex items-center gap-2 hover:bg-zinc-800 transition-colors"
+            >
+              Download Resume
+            </motion.a>
             
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 ml-2">
+
               <a 
                 href={personalInfo.links.github} 
                 target="_blank" 

@@ -6,6 +6,7 @@ import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { name: 'About', href: '#about' },
+  { name: 'Architecture', href: '#architecture' },
   { name: 'Projects', href: '#projects' },
   { name: 'Experience', href: '#experience' },
   { name: 'Skills', href: '#skills' },
@@ -34,7 +35,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -44,11 +45,19 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
+          <div className="h-4 w-[1px] bg-zinc-800 mx-2" />
+          <a
+            href="/Resume.pdf"
+            target="_blank"
+            className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
+          >
+            Resume
+          </a>
           <a
             href="#contact"
-            className="px-5 py-2 rounded-full bg-white text-black text-sm font-semibold hover:bg-zinc-200 transition-colors"
+            className="px-5 py-2 rounded-full bg-white text-black text-sm font-semibold hover:bg-zinc-200 transition-colors shadow-lg shadow-white/5"
           >
-            Hire Me
+            Let's Connect
           </a>
         </div>
 
@@ -79,14 +88,23 @@ export default function Navbar() {
             </a>
           ))}
           <a
+            href="/Resume.pdf"
+            target="_blank"
+            className="text-lg font-medium text-zinc-400 hover:text-white transition-colors"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Resume
+          </a>
+          <a
             href="#contact"
             className="w-full py-3 rounded-xl bg-white text-black text-center font-semibold"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Hire Me
+            Let's Connect
           </a>
         </div>
       </motion.div>
     </nav>
   );
 }
+

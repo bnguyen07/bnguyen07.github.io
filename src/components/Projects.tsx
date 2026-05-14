@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, ChevronDown, ChevronUp, FileText } from 'lucide-react';
+import Image from 'next/image';
 import { projects } from '@/data/portfolio';
 import { Section } from './Section';
 import { GithubIcon } from './Icons';
@@ -30,8 +31,21 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative flex flex-col h-full rounded-2xl border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900 transition-all overflow-hidden"
+      className="group relative flex flex-col h-full rounded-2xl border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900 transition-all overflow-hidden shadow-xl"
     >
+      {/* Project Image */}
+      {project.image && (
+        <div className="relative w-full h-48 overflow-hidden border-b border-zinc-800">
+          <Image 
+            src={project.image} 
+            alt={project.title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent opacity-60" />
+        </div>
+      )}
+
       <div className="p-8 flex flex-col h-full">
         <div className="flex justify-between items-start mb-4">
           <div className="flex flex-wrap gap-2">
@@ -58,17 +72,17 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
 
         <div className="flex items-center gap-4 mt-auto pt-6 border-t border-zinc-800/50">
           {project.github && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors" title="View Source">
               <GithubIcon size={18} />
             </a>
           )}
           {project.live && (
-            <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">
+            <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors" title="View Live">
               <ExternalLink size={18} />
             </a>
           )}
           {project.article && (
-            <a href={project.article} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">
+            <a href={project.article} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors" title="Read Article">
               <FileText size={18} />
             </a>
           )}
@@ -108,3 +122,4 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
     </motion.div>
   );
 }
+

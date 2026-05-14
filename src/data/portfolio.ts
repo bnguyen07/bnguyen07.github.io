@@ -8,6 +8,7 @@ export const personalInfo = {
   links: {
     linkedin: "https://www.linkedin.com/in/briannguyen2447/",
     github: "https://github.com/bnguyen07",
+    resume: "/Resume.pdf"
   }
 };
 
@@ -19,6 +20,7 @@ export const projects = [
     github: "https://github.com/bnguyen07/OrderSystem",
     article: "https://www.linkedin.com/pulse/i-vibe-code-mini-amazon-antigravity-brian-nguyen-k3o9c/",
     featured: true,
+    image: "/projects/ordersystem.png",
     details: "Focuses on robust backend architecture, implementing design patterns and scalable API structures for enterprise-level order management."
   },
   {
@@ -28,6 +30,7 @@ export const projects = [
     github: "https://github.com/bnguyen07/TrendStrategyBacktester",
     live: "https://trend-backtester.streamlit.app/",
     featured: true,
+    image: "/projects/trend-backtester.png",
     details: "Enables users to input stock signals and run backtests against historical data, providing visual analytics and performance metrics."
   },
   {
@@ -46,6 +49,17 @@ export const projects = [
     hidden: true,
     details: "Planned project to demonstrate scaling and resilience in a distributed microservices environment."
   }
+];
+
+export const architectureTech = [
+  { name: "Docker", icon: "Docker" },
+  { name: "Kubernetes", icon: "Kubernetes" },
+  { name: "Azure", icon: "Cloud" },
+  { name: "Redis", icon: "Database" },
+  { name: "OAuth 2.0", icon: "Lock" },
+  { name: "Message Queues", icon: "MessageSquare" },
+  { name: "CI/CD", icon: "Zap" },
+  { name: "Microservices", icon: "Layers" }
 ];
 
 export const experience = [
@@ -130,3 +144,4 @@ export const certifications = [
     date: "01/2025"
   }
 ];
+
