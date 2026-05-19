@@ -28,7 +28,7 @@ export const projects = [
     summary: "A Python-based stock signal and backtesting application for testing trading strategies and visualizing performance.",
     tech: ["Python", "Streamlit", "Data Analysis", "Backtesting"],
     github: "https://github.com/bnguyen07/TrendStrategyBacktester",
-    live: "https://trend-backtester.streamlit.app/",
+    live: "https://trendstrategybacktester.streamlit.app/",
     featured: true,
     image: "/projects/trend-backtester.png",
     details: "Enables users to input stock signals and run backtests against historical data, providing visual analytics and performance metrics."
