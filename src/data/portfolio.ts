@@ -18,6 +18,7 @@ export const projects = [
     summary: "A backend-heavy order management system designed to showcase senior engineering, architecture, API design, and scalable system thinking.",
     tech: [".NET", "C#", "SQL", "REST API", "Architecture Patterns"],
     github: "https://github.com/bnguyen07/OrderSystem",
+    live: "https://ordersystem.brian-nguyen.dev/",
     article: "https://www.linkedin.com/pulse/i-vibe-code-mini-amazon-antigravity-brian-nguyen-k3o9c/",
     featured: true,
     image: "/projects/ordersystem.png",
@@ -144,4 +145,3 @@ export const certifications = [
     date: "01/2025"
   }
 ];
-
