@@ -30,6 +30,7 @@ export const projects = [
     tech: ["Python", "Streamlit", "Data Analysis", "Backtesting"],
     github: "https://github.com/bnguyen07/TrendStrategyBacktester",
     live: "https://trendstrategybacktester.streamlit.app/",
+    article: "https://www.linkedin.com/pulse/how-i-built-stock-backtester-python-brian-nguyen-w7ibc/",
     featured: true,
     image: "/projects/trend-backtester.png",
     details: "Enables users to input stock signals and run backtests against historical data, providing visual analytics and performance metrics."
