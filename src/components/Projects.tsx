@@ -10,19 +10,56 @@ import { GithubIcon } from './Icons';
 
 export default function Projects() {
   const visibleProjects = projects.filter(project => !project.hidden);
+  const [activeImage, setActiveImage] = useState<string | null>(null);
 
   return (
     <Section id="projects" title="Featured Projects">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {visibleProjects.map((project, index) => (
-          <ProjectCard key={index} project={project} index={index} />
+          <ProjectCard key={index} project={project} index={index} onShowImage={setActiveImage} />
         ))}
       </div>
+
+      {/* Lightbox Overlay */}
+      <AnimatePresence>
+        {activeImage && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90 p-4 backdrop-blur-md cursor-zoom-out"
+            onClick={() => setActiveImage(null)}
+          >
+            <button 
+              className="absolute top-6 right-6 text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-wider bg-zinc-900/80 px-4 py-2 rounded-full border border-zinc-800 transition-colors z-50"
+              onClick={() => setActiveImage(null)}
+            >
+              Close
+            </button>
+            <motion.div 
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="relative max-w-5xl max-h-[85vh] w-full h-full"
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image itself
+            >
+              <Image 
+                src={activeImage} 
+                alt="Project screenshot full view"
+                fill
+                className="object-contain rounded-lg shadow-2xl"
+                unoptimized
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Section>
   );
 }
 
-function ProjectCard({ project, index }: { project: any, index: number }) {
+function ProjectCard({ project, index, onShowImage }: { project: any, index: number, onShowImage: (src: string) => void }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -105,14 +142,43 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="pt-6 text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/30 mt-6">
-                <p>{project.details}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tech.map((t: string) => (
-                    <span key={t} className="bg-zinc-800/50 px-2 py-1 rounded text-[11px]">
-                      {t}
-                    </span>
-                  ))}
+              <div className="pt-6 text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/30 mt-6 space-y-6">
+                <div>
+                  <h4 className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Description</h4>
+                  <p>{project.details}</p>
+                </div>
+                
+                {project.screenshots && project.screenshots.length > 0 && (
+                  <div>
+                    <h4 className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-3">Project Gallery</h4>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                      {project.screenshots.map((shot: string, sIdx: number) => (
+                        <div 
+                          key={sIdx} 
+                          className="group/img relative aspect-video rounded-lg overflow-hidden border border-zinc-800 hover:border-zinc-700 transition-all cursor-zoom-in bg-zinc-950"
+                          onClick={() => onShowImage(shot)}
+                        >
+                          <Image 
+                            src={shot} 
+                            alt={`${project.title} screenshot ${sIdx + 1}`}
+                            fill
+                            className="object-cover group-hover/img:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div>
+                  <h4 className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-3 font-semibold">Technologies Used</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((t: string) => (
+                      <span key={t} className="bg-zinc-800/50 px-2 py-1 rounded text-[11px]">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>

@@ -20,6 +20,11 @@ export const projects = [
     live: "https://fincalendar.app/",
     featured: true,
     image: "/projects/fincalendar.png",
+    screenshots: [
+      "/projects/fincalendar.png",
+      "/projects/fincalendar_features.png",
+      "/projects/fincalendar_pricing.png"
+    ],
     details: "Designed and built a production-ready SaaS platform providing financial calendar and business day APIs for capital markets. Developed using FastAPI, PostgreSQL, Angular, Azure, and Cloudflare, featuring API key authentication, subscription management, interactive API documentation, self-service dashboards, usage tracking, and rate limiting."
   },
   {
@@ -31,6 +36,10 @@ export const projects = [
     article: "https://www.linkedin.com/pulse/i-vibe-code-mini-amazon-antigravity-brian-nguyen-k3o9c/",
     featured: true,
     image: "/projects/ordersystem.png",
+    screenshots: [
+      "/projects/ordersystem.png",
+      "/projects/ordersystem_next.png"
+    ],
     details: "Designed and developed an enterprise-style order management application showcasing modern full-stack architecture and API-driven design. Structured the solution with clear separation of concerns to improve maintainability, extensibility, and long-term scalability, applying production-oriented engineering practices including authentication, testing, observability, and security considerations."
   },
   {
@@ -42,6 +51,10 @@ export const projects = [
     article: "https://www.linkedin.com/pulse/how-i-built-stock-backtester-python-brian-nguyen-w7ibc/",
     featured: true,
     image: "/projects/trend-backtester.png",
+    screenshots: [
+      "/projects/trend-backtester.png",
+      "/projects/trend-backtester_next.png"
+    ],
     details: "Enables users to input stock signals and run backtests against historical data, providing visual analytics and performance metrics."
   },
   {
