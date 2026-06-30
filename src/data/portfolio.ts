@@ -1,10 +1,10 @@
 export const personalInfo = {
   name: "Brian Nguyen",
   role: "Senior Software Engineer",
-  location: "Cypress, Texas",
+  location: "Houston, TX",
   email: "brian.nguyen2447@gmail.com",
   phone: "832-633-4687",
-  bio: "Senior Software Engineer with 10+ years of experience building enterprise-grade applications using Angular, TypeScript, C#, .NET, and SQL Server. I specialize in full-stack enterprise systems, reusable UI architecture, backend integrations, database-driven applications, and production-quality software delivery. Currently pursuing an M.S. in Data Science at The University of Texas at Austin and expanding into cloud-native architecture, AI-assisted development, and distributed systems.",
+  bio: "Senior Full-Stack Software Engineer with 10+ years of experience designing, developing, and modernizing enterprise applications using C#, .NET, Angular, SQL Server, and Azure technologies. Experienced in delivering full-stack solutions for business-critical financial systems, collaborating with cross-functional teams, and contributing to application modernization and technical design. Currently pursuing a Master of Science in Data Science at The University of Texas at Austin.",
   links: {
     linkedin: "https://www.linkedin.com/in/briannguyen2447/",
     github: "https://github.com/bnguyen07",
@@ -20,7 +20,7 @@ export const projects = [
     live: "https://fincalendar.app/",
     featured: true,
     image: "/projects/fincalendar.png",
-    details: "Exposes OTC-grade financial date math and calendars via REST APIs. Leverages python-holidays for data separation and QuantLib for precision calculations, enabling composite calendar evaluations (e.g., USNY + GBLO + EUTA), business day adjustments, day count fractions, and payment schedule generation."
+    details: "Designed and built a production-ready SaaS platform providing financial calendar and business day APIs for capital markets. Developed using FastAPI, PostgreSQL, Angular, Azure, and Cloudflare, featuring API key authentication, subscription management, interactive API documentation, self-service dashboards, usage tracking, and rate limiting."
   },
   {
     title: "OrderSystem",
@@ -31,7 +31,7 @@ export const projects = [
     article: "https://www.linkedin.com/pulse/i-vibe-code-mini-amazon-antigravity-brian-nguyen-k3o9c/",
     featured: true,
     image: "/projects/ordersystem.png",
-    details: "Focuses on robust backend architecture, implementing design patterns and scalable API structures for enterprise-level order management."
+    details: "Designed and developed an enterprise-style order management application showcasing modern full-stack architecture and API-driven design. Structured the solution with clear separation of concerns to improve maintainability, extensibility, and long-term scalability, applying production-oriented engineering practices including authentication, testing, observability, and security considerations."
   },
   {
     title: "Trend Strategy Backtester",
@@ -80,11 +80,14 @@ export const experience = [
     period: "04/2017 - Present",
     location: "Houston, TX",
     tasks: [
-      "Played an essential role in the development of a next-generation Portfolio Management System (Sentry), utilizing Angular, C# .NET, and MSSQL.",
-      "Developed custom controls by wrapping Telerik's Kendo UI for Angular, ensuring a uniform look and feel.",
-      "Collaborated in an Agile team, participating in Sprint grooming, stand-ups, and retrospectives.",
-      "Improved application reliability through comprehensive code reviews and technical feedback.",
-      "Mentored and onboarded new developers."
+      "Design and implement full-stack features for an enterprise investment management platform using C#, .NET, Angular, SQL Server, and REST APIs.",
+      "Deliver enhancements supporting portfolio management, financial reporting, cashflow processing, and investment workflows.",
+      "Contribute to modernization initiatives by evolving legacy functionality into maintainable web-based applications while preserving backward compatibility.",
+      "Collaborate with product owners, business analysts, QA engineers, and developers to translate business requirements into technical solutions.",
+      "Participate in solution design, code reviews, and technical discussions to improve application quality and maintainability.",
+      "Troubleshoot production issues, optimize application performance, and support enterprise software releases.",
+      "Mentor junior developers and provide technical guidance during feature implementation.",
+      "Leverage AI-assisted development tools, including GitHub Copilot, to improve engineering productivity and accelerate implementation."
     ]
   },
   {
@@ -93,22 +96,10 @@ export const experience = [
     period: "09/2014 - 03/2017",
     location: "Houston, TX",
     tasks: [
-      "Built the front-end for a Document Management System using AngularJS, ASP.NET web services, and MSSQL.",
-      "Administrated Dokmee Cloud serving almost 3000 accounts.",
-      "Developed server-side applications using WPF (MVVM) and Windows services.",
-      "Created a high-impact scanner plugin for ScanSnap scanners, significantly boosting license sales.",
-      "Configured CI/CD using Cruise Control and InstallShield."
-    ]
-  },
-  {
-    company: "Dokmee (Office Gemini)",
-    role: "Software Quality Assurance",
-    period: "02/2014 - 09/2014",
-    location: "Houston, TX",
-    tasks: [
-      "Managed virtual machines for rigorous bug verification and testing.",
-      "Created detailed test cases and scenarios for automated testing support.",
-      "Established diverse testing environments with various OS and SQL versions."
+      "Developed enterprise document management applications using C#, ASP.NET MVC, SQL Server, and JavaScript.",
+      "Delivered workflow automation, document processing, scanner integration, and database-driven features for enterprise customers.",
+      "Designed SQL queries, stored procedures, and ETL-related processes supporting document management workflows.",
+      "Investigated production issues, implemented enhancements, and collaborated with QA and support teams to deliver reliable software releases."
     ]
   },
   {
@@ -117,29 +108,27 @@ export const experience = [
     period: "09/2012 - 08/2013",
     location: "Houston, TX",
     tasks: [
-      "Developed a Silverlight 5 web application for internal asset management.",
-      "Troubleshot internal applications for the Oil and Gas industry.",
-      "Collaborated with Support and Integration teams on critical systems."
+      "Supported enterprise applications and integrations for Oil & Gas business operations.",
+      "Developed a Silverlight-based internal asset and user management application.",
+      "Collaborated with support and integration teams to troubleshoot production issues."
     ]
   }
 ];
 
 export const skills = {
-  core: ["Angular", "TypeScript", "C#", ".NET", "SQL Server", "MSSQL", "REST APIs", "Git", "Agile", "Python", "Data Science"],
-  expanding: ["React", "Next.js", "Cloud", "Docker", "Kubernetes", "Redis", "Message Queues", "OAuth", "AI/ML", "LLM Applications"]
+  core: ["C#", ".NET Core", "Angular", "TypeScript", "SQL Server", "REST APIs", "Entity Framework Core", "Azure", "Git", "CI/CD", "Agile/Scrum"],
+  expanding: ["Next.js", "Python", "GitHub Copilot", "Data Science", "Docker", "Kubernetes", "React"]
 };
 
 export const education = [
   {
     degree: "Master of Science, Data Science (In Progress)",
     school: "University of Texas at Austin",
-    period: "Expected 06/2027"
+    period: "Expected Spring 2027"
   },
   {
     degree: "Bachelor of Science, Computer Science",
-    school: "University of Houston",
-    period: "12/2013",
-    location: "Houston, TX"
+    school: "University of Houston"
   }
 ];
 
