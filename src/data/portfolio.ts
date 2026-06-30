@@ -46,7 +46,7 @@ export const projects = [
       "/projects/ordersystem_reports.png",
       "/projects/ordersystem_pipelines.png"
     ],
-    details: "OVERVIEW:\nI built OrderSystem as a scalable, distributed ERP platform designed to handle enterprise procurement, inventory control, and order fulfillment workflows at scale.\n\nKEY ARCHITECTURAL PHASES:\n• Monolithic Foundation: Developed a C# Web API with SQL Server & EF Core, using the Repository Pattern to mock databases and speed up test suites.\n• Caching & Messaging: Containerized the stack with Docker. Integrated Redis caching (Cache-Aside pattern) for instant catalog reads and RabbitMQ to process checkouts asynchronously, reducing UI lag to zero.\n• Microservices & K8s: Migrated to microservices to achieve fault isolation (e.g., procurement and catalog remain operational even if ordering experiences exceptions). Deployed to Azure Kubernetes Service (AKS) with Horizontal Pod Autoscaling (HPA) to scale dynamically under load.\n• Modern UI & AI: Built a Next.js/React frontend with Google OAuth, featuring real-time RabbitMQ queue traffic widgets and an AI Copilot assistant.\n\nTECHNOLOGY STACK:\nC#, .NET Core, Web APIs, Entity Framework Core, SQL Server, Redis, RabbitMQ, Docker, Azure Kubernetes Service (AKS), Next.js, React, Google OAuth, and Framer Motion."
+    details: "OVERVIEW:\nOrderSystem is a distributed, high-throughput ERP platform engineered to orchestrate enterprise-level procurement, inventory control, and transactional order fulfillment workflows at scale.\n\nTECHNOLOGY STACK:\nC#, .NET Core, Web APIs, Entity Framework Core, SQL Server, Redis, RabbitMQ, Docker, Azure Kubernetes Service (AKS), Next.js, React, Google OAuth, and Framer Motion."
   },
   {
     title: "Trend Strategy Backtester",
@@ -56,10 +56,15 @@ export const projects = [
     live: "https://trendstrategybacktester.streamlit.app/",
     article: "https://www.linkedin.com/pulse/how-i-built-stock-backtester-python-brian-nguyen-w7ibc/",
     featured: true,
-    image: "/projects/trend-backtester.png",
+    image: "/projects/trend_backtester_home.png",
     screenshots: [
-      "/projects/trend-backtester.png",
-      "/projects/trend-backtester_next.png"
+      "/projects/trend_backtester_home.png",
+      "/projects/trend_backtester_input.png",
+      "/projects/trend_backtester_results.png",
+      "/projects/trend_backtester_active_signals.png",
+      "/projects/trend_backtester_equity.png",
+      "/projects/trend_backtester_scanner.png",
+      "/projects/trend_backtester_terms.png"
     ],
     details: "Enables users to input stock signals and run backtests against historical data, providing visual analytics and performance metrics."
   },
