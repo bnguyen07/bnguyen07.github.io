@@ -17,7 +17,6 @@ export const projects = [
     title: "FinCalendar",
     summary: "A QuantLib-backed API and SaaS platform for financial date calculations, holiday calendars, and payment schedules.",
     tech: ["FastAPI", "Python", "QuantLib", "Angular", "Docker"],
-    github: "https://github.com/bnguyen07/FinCalendar",
     live: "https://fincalendar.app/",
     featured: true,
     image: "/projects/fincalendar.png",
