@@ -22,6 +22,9 @@ export const projects = [
     image: "/projects/fincalendar.png",
     screenshots: [
       "/projects/fincalendar.png",
+      "/projects/fincalendar_playground.png",
+      "/projects/fincalendar_recipes.png",
+      "/projects/fincalendar_api.png",
       "/projects/fincalendar_features.png",
       "/projects/fincalendar_pricing.png"
     ],
@@ -40,7 +43,7 @@ export const projects = [
       "/projects/ordersystem.png",
       "/projects/ordersystem_next.png"
     ],
-    details: "Designed and developed an enterprise-style order management application showcasing modern full-stack architecture and API-driven design. Structured the solution with clear separation of concerns to improve maintainability, extensibility, and long-term scalability, applying production-oriented engineering practices including authentication, testing, observability, and security considerations."
+    details: "OVERVIEW:\nTo explore and demonstrate enterprise-grade scalability, I architected and built a highly resilient, distributed Order Management System designed to mirror the scaling challenges of platforms like Amazon.\n\nEVOLUTIONARY ARCHITECTURE:\n• Phase 1 (Monolith): Started with a C# Web API on SQL Server with EF Core. Centralized logic in the Repository Pattern to mock databases, accelerating unit test runs 100-fold.\n• Phase 2 (Docker & Redis): Standardized builds with Docker and added a Redis Distributed Cache. Caching trending catalogs prevented SQL Server connection pool depletion.\n• Phase 3 (RabbitMQ Broker): Introduced RabbitMQ. Front-end gets instant HTTP 202 checkout confirmations, and orders publish asynchronously in events, eliminating user-facing lag.\n• Phase 4 (Microservices & Fault Isolation): Separated components into isolated containers. When the order service misbehaved during development, catalog navigation remained 100% online—proving the value of fault isolation.\n• Phase 5 (Kubernetes on AKS): Managed cluster using Azure Kubernetes Service (AKS) with Horizontal Pod Autoscaling (HPA) to scale dynamically up to 10 container replicas. RabbitMQ acts as a pressure relief valve, protecting the database from load spikes.\n• Phase 6 (Frontend & AI): Next.js/React frontend with Google OAuth, featuring real-time RabbitMQ payload visualizer widgets and a built-in AI Copilot chat box.\n\nTECHNOLOGY STACK:\nBuilt utilizing C#, .NET Core, Web APIs, Entity Framework Core, SQL Server, Redis, RabbitMQ, Docker, Azure Kubernetes Service (AKS), Next.js, React, Google OAuth, and Framer Motion."
   },
   {
     title: "Trend Strategy Backtester",

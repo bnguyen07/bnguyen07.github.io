@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, ChevronDown, ChevronUp, FileText } from 'lucide-react';
+import { ExternalLink, ChevronDown, ChevronUp, FileText, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import Image from 'next/image';
 import { projects } from '@/data/portfolio';
 import { Section } from './Section';
@@ -10,48 +10,103 @@ import { GithubIcon } from './Icons';
 
 export default function Projects() {
   const visibleProjects = projects.filter(project => !project.hidden);
-  const [activeImage, setActiveImage] = useState<string | null>(null);
+  const [lightboxProject, setLightboxProject] = useState<any | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number>(0);
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!lightboxProject || !lightboxProject.screenshots) return;
+    const len = lightboxProject.screenshots.length;
+    setLightboxIndex((lightboxIndex - 1 + len) % len);
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!lightboxProject || !lightboxProject.screenshots) return;
+    const len = lightboxProject.screenshots.length;
+    setLightboxIndex((lightboxIndex + 1) % len);
+  };
+
+  const currentImage = lightboxProject?.screenshots?.[lightboxIndex];
 
   return (
     <Section id="projects" title="Featured Projects">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {visibleProjects.map((project, index) => (
-          <ProjectCard key={index} project={project} index={index} onShowImage={setActiveImage} />
+          <ProjectCard 
+            key={index} 
+            project={project} 
+            index={index} 
+            onShowImage={(proj, imgIdx) => {
+              setLightboxProject(proj);
+              setLightboxIndex(imgIdx);
+            }} 
+          />
         ))}
       </div>
 
       {/* Lightbox Overlay */}
       <AnimatePresence>
-        {activeImage && (
+        {lightboxProject && currentImage && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90 p-4 backdrop-blur-md cursor-zoom-out"
-            onClick={() => setActiveImage(null)}
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 p-4 backdrop-blur-md cursor-zoom-out select-none"
+            onClick={() => setLightboxProject(null)}
           >
+            {/* Close Button */}
             <button 
-              className="absolute top-6 right-6 text-zinc-400 hover:text-white text-xs font-bold uppercase tracking-wider bg-zinc-900/80 px-4 py-2 rounded-full border border-zinc-800 transition-colors z-50"
-              onClick={() => setActiveImage(null)}
+              className="absolute top-6 right-6 text-zinc-400 hover:text-white bg-zinc-900/80 p-3 rounded-full border border-zinc-800 transition-all z-50 cursor-pointer shadow-lg hover:scale-105"
+              onClick={() => setLightboxProject(null)}
+              title="Close Gallery"
             >
-              Close
+              <X size={20} />
             </button>
+
+            {/* Navigation buttons: only show if multiple screenshots */}
+            {lightboxProject.screenshots.length > 1 && (
+              <>
+                <button 
+                  className="absolute left-6 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white bg-zinc-900/60 hover:bg-zinc-800/80 p-4 rounded-full border border-zinc-800 transition-all z-50 cursor-pointer shadow-xl backdrop-blur-md hover:scale-110"
+                  onClick={handlePrev}
+                  title="Previous Screenshot"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <button 
+                  className="absolute right-6 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white bg-zinc-900/60 hover:bg-zinc-800/80 p-4 rounded-full border border-zinc-800 transition-all z-50 cursor-pointer shadow-xl backdrop-blur-md hover:scale-110"
+                  onClick={handleNext}
+                  title="Next Screenshot"
+                >
+                  <ChevronRight size={24} />
+                </button>
+              </>
+            )}
+
+            {/* Main Image View */}
             <motion.div 
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="relative max-w-5xl max-h-[85vh] w-full h-full"
-              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image itself
+              key={lightboxIndex} // Force smooth fade transition when changing image
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.2 }}
+              className="relative max-w-5xl max-h-[80vh] w-full h-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()} // Prevent close when clicking image
             >
               <Image 
-                src={activeImage} 
-                alt="Project screenshot full view"
+                src={currentImage} 
+                alt={`${lightboxProject.title} screenshot ${lightboxIndex + 1}`}
                 fill
                 className="object-contain rounded-lg shadow-2xl"
                 unoptimized
               />
             </motion.div>
+            
+            {/* Image Indicator Tag */}
+            <div className="absolute bottom-6 bg-zinc-900/80 border border-zinc-800 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider text-zinc-400 shadow-md">
+              {lightboxIndex + 1} / {lightboxProject.screenshots.length}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -59,7 +114,7 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ project, index, onShowImage }: { project: any, index: number, onShowImage: (src: string) => void }) {
+function ProjectCard({ project, index, onShowImage }: { project: any, index: number, onShowImage: (proj: any, imgIdx: number) => void }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -145,7 +200,7 @@ function ProjectCard({ project, index, onShowImage }: { project: any, index: num
               <div className="pt-6 text-sm text-zinc-400 leading-relaxed border-t border-zinc-800/30 mt-6 space-y-6">
                 <div>
                   <h4 className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Description</h4>
-                  <p>{project.details}</p>
+                  <p className="whitespace-pre-line">{project.details}</p>
                 </div>
                 
                 {project.screenshots && project.screenshots.length > 0 && (
@@ -156,7 +211,7 @@ function ProjectCard({ project, index, onShowImage }: { project: any, index: num
                         <div 
                           key={sIdx} 
                           className="group/img relative aspect-video rounded-lg overflow-hidden border border-zinc-800 hover:border-zinc-700 transition-all cursor-zoom-in bg-zinc-950"
-                          onClick={() => onShowImage(shot)}
+                          onClick={() => onShowImage(project, sIdx)}
                         >
                           <Image 
                             src={shot} 
