@@ -38,10 +38,13 @@ export const projects = [
     live: "https://ordersystem.brian-nguyen.dev/",
     article: "https://www.linkedin.com/pulse/i-vibe-code-mini-amazon-antigravity-brian-nguyen-k3o9c/",
     featured: true,
-    image: "/projects/ordersystem.png",
+    image: "/projects/ordersystem_dashboard.png",
     screenshots: [
-      "/projects/ordersystem.png",
-      "/projects/ordersystem_next.png"
+      "/projects/ordersystem_dashboard.png",
+      "/projects/ordersystem_admin.png",
+      "/projects/ordersystem_inventory.png",
+      "/projects/ordersystem_reports.png",
+      "/projects/ordersystem_pipelines.png"
     ],
     details: "OVERVIEW:\nTo explore and demonstrate enterprise-grade scalability, I architected and built a highly resilient, distributed Order Management System designed to mirror the scaling challenges of platforms like Amazon.\n\nEVOLUTIONARY ARCHITECTURE:\n• Phase 1 (Monolith): Started with a C# Web API on SQL Server with EF Core. Centralized logic in the Repository Pattern to mock databases, accelerating unit test runs 100-fold.\n• Phase 2 (Docker & Redis): Standardized builds with Docker and added a Redis Distributed Cache. Caching trending catalogs prevented SQL Server connection pool depletion.\n• Phase 3 (RabbitMQ Broker): Introduced RabbitMQ. Front-end gets instant HTTP 202 checkout confirmations, and orders publish asynchronously in events, eliminating user-facing lag.\n• Phase 4 (Microservices & Fault Isolation): Separated components into isolated containers. When the order service misbehaved during development, catalog navigation remained 100% online—proving the value of fault isolation.\n• Phase 5 (Kubernetes on AKS): Managed cluster using Azure Kubernetes Service (AKS) with Horizontal Pod Autoscaling (HPA) to scale dynamically up to 10 container replicas. RabbitMQ acts as a pressure relief valve, protecting the database from load spikes.\n• Phase 6 (Frontend & AI): Next.js/React frontend with Google OAuth, featuring real-time RabbitMQ payload visualizer widgets and a built-in AI Copilot chat box.\n\nTECHNOLOGY STACK:\nBuilt utilizing C#, .NET Core, Web APIs, Entity Framework Core, SQL Server, Redis, RabbitMQ, Docker, Azure Kubernetes Service (AKS), Next.js, React, Google OAuth, and Framer Motion."
   },
