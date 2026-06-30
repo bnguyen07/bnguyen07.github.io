@@ -14,6 +14,16 @@ export const personalInfo = {
 
 export const projects = [
   {
+    title: "FinCalendar",
+    summary: "A QuantLib-backed API and SaaS platform for financial date calculations, holiday calendars, and payment schedules.",
+    tech: ["FastAPI", "Python", "QuantLib", "Angular", "Docker"],
+    github: "https://github.com/bnguyen07/FinCalendar",
+    live: "https://fincalendar.app/",
+    featured: true,
+    image: "/projects/fincalendar.png",
+    details: "Exposes OTC-grade financial date math and calendars via REST APIs. Leverages python-holidays for data separation and QuantLib for precision calculations, enabling composite calendar evaluations (e.g., USNY + GBLO + EUTA), business day adjustments, day count fractions, and payment schedule generation."
+  },
+  {
     title: "OrderSystem",
     summary: "A backend-heavy order management system designed to showcase senior engineering, architecture, API design, and scalable system thinking.",
     tech: [".NET", "C#", "SQL", "REST API", "Architecture Patterns"],
